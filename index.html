@@ -8,6 +8,101 @@
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    
+    <script>
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BrowserDetectService {
+  // https://raw.githubusercontent.com/3rd-Eden/useragent/master/lib/regexps.js
+  fbWvRegex = [
+    new RegExp("\\[(FBAN/MessengerForiOS|FB_IAB/MESSENGER);FBAV/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+)|)|)"),
+    new RegExp("\\[FB.*;(FBAV)/(\\d+)(?:\\.(\\d+)|)(?:\\.(\\d+)|)"),
+    new RegExp("\\[FB.*;"),
+  ];
+  snapWebRegex = [
+    new RegExp("(Snapchat)\\/(\\d+)\\.(\\d+)\\.(\\d+).(\\d+)"),
+    new RegExp("(Snapchat)(\\d+)\\.(\\d+)\\.(\\d+).(\\d+)"),
+  ];
+  AndroidRegex = [
+    new RegExp("(Android)"),
+  ];
+  iPhoneRegex = [
+    new RegExp("^(.*)-iPad\\/(\\d+)(?:\\.(\\d+)|)(?:\\.(\\d+)|)(?:\\.(\\d+)|) CFNetwork"),
+    new RegExp("^(.*)-iPhone/(\\d+)(?:\\.(\\d+)|)(?:\\.(\\d+)|)(?:\\.(\\d+)|) CFNetwork"),
+    new RegExp("(iPod|iPhone|iPad).+GSA/(\\d+)\\.(\\d+)\\.(\\d+) Mobile"),
+    new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+)|).*[ +]Safari"),
+    new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+)|).* AppleNews\\/\\d+\\.\\d+\\.\\d+?"),
+    new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+)|)"),
+    new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+)|).*Mobile.*[ +]Safari"),
+    new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+)|).*Mobile"),
+    new RegExp("(iPod|iPhone|iPad).* Safari"),
+    new RegExp("(iPod|iPhone|iPad)"),
+    new RegExp("(Outlook-iOS)/\\d+\\.\\d+\\.prod\\.iphone \\((\\d+)\\.(\\d+)\\.(\\d+)\\)"),
+  ];
+
+  constructor(
+  ) { }
+
+  detectWebView() : string | undefined {
+    const userAgent = navigator.userAgent;
+    if (this.matchesAny(userAgent, this.fbWvRegex)) {
+      return 'Facebook';
+    }
+    if (this.matchesAny(userAgent, this.snapWebRegex)) {
+      return 'Snapchat';
+    }
+    return undefined;
+  }
+  detectMobileOS(): string | undefined {
+    const userAgent = navigator.userAgent;
+    if (this.matchesAny(userAgent, this.AndroidRegex)) {
+      return 'Android';
+    }
+    if (this.matchesAny(userAgent, this.iPhoneRegex)) {
+      return 'iPhone';
+    }
+    return undefined;
+  }
+  matchesAny(userAgent: string, parsers: RegExp[]): boolean {
+    let res: any;
+    for (let i = 0; i < parsers.length; i++) {
+      if (parsers[i].exec(userAgent)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  fixInstructionsImgUrl(): string | undefined {
+    const app = this.detectWebView();
+    const os = this.detectMobileOS();
+    if (!app) { return undefined; }
+    if (os === 'Android') {
+      if (app === 'Facebook') {
+        return '/HowTo-OpenInChrome-Android-Facebook.png';
+      } else { // Snapchat is last remaining OS with image help
+        return '/HowTo-OpenInChrome-Android-Snapchat.png';
+      }
+    } else { // iOS
+      // we only have one image for now on iOS
+      // if (app === 'Snapchat') {
+        return '/HowTo-OpenInChrome-iOS-Snapchat.png';
+      // }
+    }
+    // return '/HowTo-OpenInChrome.png';
+    // Add whichever apps and OS images you have here
+  }
+
+}
+
+</script>
+
+    
+    
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
