@@ -7,39 +7,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
- <script src="ua-parser.min.js"></script>
+    <style>
+	    .notice - bar {
+      display: none;
+      width: 100 % ;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 20 px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font - size: 0.8 em;
+      font - weight: bold;
+      z - index: 99999;
+   }
+   .ok - button {
+      padding: 10 px;
+      background: red;
+      border - radius: 10 px;
+   }
+	  </style>
+	  
+	  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 
+	  
+	  
+	  
+<script>
+ function isFacebookApp() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+    } 
+    if(isFacebookApp()){
+         // your action here if user using Facebook in-app browser
+        alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
+    }
+</script>
     
+	  
+	  <div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
+   <span class="ok-button">OK, I understand</span>
+</div>
+	  
+	  
   </head>
-  <body onload="fnBrowserDetect()">
+	
+	
+	
+  <body>
     
-    <h1></h1>
-	<script>
-		function fnBrowserDetect(){
-                 
-         let userAgent = navigator.userAgent;
-         let browserName;
-         
-         if(userAgent.match(/chrome|chromium|crios/i)){
-             browserName = "chrome";
-           }else if(userAgent.match(/firefox|fxios/i)){
-             browserName = "firefox";
-           }  else if(userAgent.match(/safari/i)){
-             browserName = "safari";
-           }else if(userAgent.match(/opr\//i)){
-             browserName = "opera";
-           } else if(userAgent.match(/edg/i)){
-             browserName = "edge";
-           }else{
-             browserName="No browser detection";
-           }
-         
-          document.querySelector("h1").innerText="You are using "+ browserName +" browser";
-         
-		 }
-	</script>
-    
+
     
     <!-- <model-viewer> HTML element -->
     <model-viewer src="cassette_mintpass2_v4.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" camera-orbit="-188.7deg 85.47deg auto">
