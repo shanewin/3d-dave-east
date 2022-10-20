@@ -20,12 +20,11 @@
 		function fnBrowserDetect(){
                  
 			 let userAgent = navigator.userAgent;
-			 let browserName;
 
-			 if(userAgent.match(){
+			 if(userAgent.match(/chrome|chromium|crios/i)) || (userAgent.match(/firefox|fxios/i))  || (userAgent.match(/safari/i)) || (userAgent.match(/opr\//i)) || (userAgent.match(/edg/i)){
+			   }else{
 			     browserName="No browser detection";
 			   }
-			
 			  alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
 
 		 }
