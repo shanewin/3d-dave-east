@@ -7,26 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-	  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
-
-	  
-	<script>
-	 function isFacebookApp() {
-		var ua = navigator.userAgent || navigator.vendor || window.opera;
-		return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-	    } 
-	    if(isFacebookApp()){
-		 // your action here if user using Facebook in-app browser
-		alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
-	    }
-	</script>
-      
+	<script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>   
   </head>
 	
 	
 	
   <body onload="isFacebookApp()">
-    
+    	<div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
+   		<span class="ok-button">OK, I understand</span>
+	</div>
+	<script>
+		 function isFacebookApp() {
+			var ua = navigator.userAgent || navigator.vendor || window.opera;
+			return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+		    } 
+		    if(isFacebookApp()){
+			 // your action here if user using Facebook in-app browser
+			alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
+		    }
+	</script>  
+	  
+	  
+	  
+	  
     <!-- <model-viewer> HTML element -->
     <model-viewer src="cassette_mintpass2_v4.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" camera-orbit="-188.7deg 85.47deg auto">
       <div class="progress-bar hide" slot="progress-bar">
@@ -42,14 +45,6 @@
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-	  
-<footer>
 	
-	
-	<div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
-   <span class="ok-button">OK, I understand</span>
-</div>
-	
-	  </footer>
   </body>
 </html>
