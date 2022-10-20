@@ -9,7 +9,7 @@
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     
 <style>
-.notice - bar {
+.notice-bar {
 	      display: none;
 	      width: 100 % ;
 	      position: fixed;
@@ -22,7 +22,7 @@
 	      font - weight: bold;
 	      z - index: 99999;
 	   }
- .ok - button {
+ .ok-button {
 	      padding: 10 px;
 	      background: red;
 	      border - radius: 10 px;
@@ -35,14 +35,14 @@
 	  
 	  
 <script>
- function isFacebookApp() {
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-    } 
-    if(isFacebookApp()){
-         // your action here if user using Facebook in-app browser
-        alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
-    }
+	 function isFacebookApp() {
+		var ua = navigator.userAgent || navigator.vendor || window.opera;
+		return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+	    } 
+	    if(isFacebookApp()){
+		 // your action here if user using Facebook in-app browser
+		alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
+	    }
 </script>
     
 	  
