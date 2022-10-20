@@ -7,26 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <style>
-	    .notice - bar {
-      display: none;
-      width: 100 % ;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      padding: 20 px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      font - size: 0.8 em;
-      font - weight: bold;
-      z - index: 99999;
-   }
-   .ok - button {
-      padding: 10 px;
-      background: red;
-      border - radius: 10 px;
-   }
-	  </style>
+    
+<style>
+.notice - bar {
+	      display: none;
+	      width: 100 % ;
+	      position: fixed;
+	      bottom: 0;
+	      left: 0;
+	      padding: 20 px;
+	      background: rgba(0, 0, 0, 0.8);
+	      color: white;
+	      font - size: 0.8 em;
+	      font - weight: bold;
+	      z - index: 99999;
+	   }
+ .ok - button {
+	      padding: 10 px;
+	      background: red;
+	      border - radius: 10 px;
+	   }
+</style>
 	  
 	  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 
@@ -45,9 +46,6 @@
 </script>
     
 	  
-	  <div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
-   <span class="ok-button">OK, I understand</span>
-</div>
 	  
 	  
   </head>
@@ -55,7 +53,10 @@
 	
 	
   <body>
-    
+     <div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
+   <span class="ok-button">OK, I understand</span>
+</div>
+	 
 
     
     <!-- <model-viewer> HTML element -->
