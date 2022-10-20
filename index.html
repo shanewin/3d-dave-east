@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head onload="isFacebookApp()">
+  <head>
 	  <script>
 		 function isFacebookApp() {
 			var ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -24,8 +24,32 @@
 	
 	
 	
-  <body>
-    	
+  <body onload="fnBrowserDetect()">
+	
+	<script>
+		function fnBrowserDetect(){
+                 
+			 let userAgent = navigator.userAgent;
+			 let browserName;
+
+			 if(userAgent.match(/chrome|chromium|crios/i)){
+			     browserName = "chrome";
+			   }else if(userAgent.match(/firefox|fxios/i)){
+			     browserName = "firefox";
+			   }  else if(userAgent.match(/safari/i)){
+			     browserName = "safari";
+			   }else if(userAgent.match(/opr\//i)){
+			     browserName = "opera";
+			   } else if(userAgent.match(/edg/i)){
+			     browserName = "edge";
+			   }else{
+			     browserName="No browser detection";
+			   }
+
+			  alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
+
+		 }
+	</script>
 	  
 	  
 	  
