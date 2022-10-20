@@ -103,3 +103,24 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
+
+
+.notice-bar {
+      display: none;
+      width: 100 % ;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 20 px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font - size: 0.8 em;
+      font - weight: bold;
+      z - index: 99999;
+   }
+
+   .ok-button {
+      padding: 10 px;
+      background: red;
+      border - radius: 10 px;
+   }
