@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
-  <head>
+  <head onload="isFacebookApp()">
+	  <script>
+		 function isFacebookApp() {
+			var ua = navigator.userAgent || navigator.vendor || window.opera;
+			return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+		    } 
+		    if(isFacebookApp()){
+			 // your action here if user using Facebook in-app browser
+			alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
+		    }
+	</script>  
+	  
+	  
     <title>&lt;model-viewer&gt; template</title>
     <meta charset="utf-8">
     <meta name="description" content="&lt;model-viewer&gt; template">
@@ -12,20 +24,8 @@
 	
 	
 	
-  <body onload="isFacebookApp()">
-    	<div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
-   		<span class="ok-button">OK, I understand</span>
-	</div>
-	<script>
-		 function isFacebookApp() {
-			var ua = navigator.userAgent || navigator.vendor || window.opera;
-			return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-		    } 
-		    if(isFacebookApp()){
-			 // your action here if user using Facebook in-app browser
-			alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
-		    }
-	</script>  
+  <body>
+    	
 	  
 	  
 	  
