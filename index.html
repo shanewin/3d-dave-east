@@ -21,11 +21,15 @@
                  
 			 let userAgent = navigator.userAgent;
 
-			 if(userAgent.match(/chrome|chromium|crios/i)) || (userAgent.match(/firefox|fxios/i))  || (userAgent.match(/safari/i)) || (userAgent.match(/opr\//i)) || (userAgent.match(/edg/i))
-			   }else{
-			     browserName="No browser detection";
+			 var isChrome = userAgent.match(/chrome|chromium|crios/i)
+			 var isFirefox = userAgent.match(/firefox|fxios/i)
+			 var isSafari = userAgent.match(/safari/i)
+			 var isOpera = userAgent.match(/opr\//i)
+			 var isEdge = userAgent.match(/edg/i)
+
+			 if(!isChrome,!isFirefox,!isSafari,!isOpera,!isEdge)
+			     alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
 			   }
-			  alert('Are you using Facebook Browser? To get better experience, try press [...] and Open the blog in Chrome or Safari. Thank you!');
 
 		 }
 	</script>
